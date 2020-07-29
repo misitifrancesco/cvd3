@@ -36,6 +36,8 @@
             <a href='<?php echo site_url('persona/admin') ?>'>Persona</a> | 
             <a href='<?php echo site_url('gruppi/admin') ?>'>Gruppi</a> |
             <a href='<?php echo site_url('documenti/admin') ?>'>Documenti</a> |
+            <a href='<?php echo site_url('fasciaeta/admin') ?>'>Fasce Età</a> |
+            <a href='<?php echo site_url('gruppofascia/admin') ?>'>Gruppo fascia</a> |
         </div>
         <!-- End of header-->
         <!-- Main -->
