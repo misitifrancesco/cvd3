@@ -30,6 +30,7 @@
         </style>
     </head>
     <body>
+        <h1>Titolo</h1>
         <!-- Header -->
         <div>
             <a href='<?php echo site_url('persona/admin') ?>'>Persona</a> | 
