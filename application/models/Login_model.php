@@ -17,7 +17,7 @@ class Login_model extends CI_Model
         $this->db->where($condition);
         $this->db->limit(1);
         $query = $this->db->get();
-
+        //print_r($this->db->last_query());   
         if ($query->num_rows() == 1) {
             return true;
         } else {

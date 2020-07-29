@@ -1,27 +1,27 @@
 <html>
 
-<head>
-    <title>COndiVIDo</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-</head>
+    <head>
+        <title>COndiVIDo</title>
+        <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"-->
+    </head>
 
-<body>
-    <!-- Image and text -->
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            
-            COndiVIDo
-        </a>
-    </nav>
-    <h3><?php echo $title; ?></h3>
-    <a href='<?php echo site_url('login/logout') ?>'>disconnetti</a> |
+    <body>
+        <!-- Image and text -->
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+
+                COndiVIDo
+            </a>
+        </nav>
+        <h3><?php echo $title; ?></h3>
+        <a href='<?php echo site_url('login/logout') ?>'>disconnetti</a> |
+        <a href='<?php echo site_url('persona/admin') ?>'>Persona</a> | 
+        <a href='<?php echo site_url('gruppi/admin') ?>'>Gruppi</a> |
+        <a href='<?php echo site_url('documenti/admin') ?>'>Documenti</a> |
+        <a href='<?php echo site_url('fasciaeta/admin') ?>'>Fasce Età</a> |
+        <a href='<?php echo site_url('attivita/admin') ?>'>Attività</a> |
 
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-
-</body>

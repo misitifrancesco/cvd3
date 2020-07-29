@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        
+
         <?php foreach ($css_files as $file): ?>
             <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
 
@@ -33,11 +33,7 @@
         <h1>Titolo</h1>
         <!-- Header -->
         <div>
-            <a href='<?php echo site_url('persona/admin') ?>'>Persona</a> | 
-            <a href='<?php echo site_url('gruppi/admin') ?>'>Gruppi</a> |
-            <a href='<?php echo site_url('documenti/admin') ?>'>Documenti</a> |
-            <a href='<?php echo site_url('fasciaeta/admin') ?>'>Fasce Età</a> |
-            <a href='<?php echo site_url('gruppofascia/admin') ?>'>Gruppo fascia</a> |
+
         </div>
         <!-- End of header-->
         <!-- Main -->
@@ -47,7 +43,7 @@
         </div>
         <!-- End of Main-->
         <!-- Footer -->
-        <div><?php echo $mio_parametro?></div>
+        <div><?php echo $mio_parametro ?></div>
         <!-- End of Footer -->
     </body>
 </html>

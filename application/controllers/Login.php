@@ -3,13 +3,9 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
+class Login extends CI_Controller {
 
-
-class Login extends CI_Controller
-{
-
-    public function __construct()
-    {
+    public function __construct() {
         parent::__construct();
 
         $this->load->database();
@@ -21,25 +17,34 @@ class Login extends CI_Controller
         //$this->load->library('grocery_CRUD');
     }
 
-    public function index()
-    {
+    public function index() {
         $this->load->view('login/index');
     }
 
-    public function log()
-    {
-        $this->load->helper('form');
-        
+    public function log() {
+        print_r($this->session->userdata('cvd_logged_in'));
 
         $data['title'] = '';
+        
+        $session = $this->session->userdata('cvd_logged_in');
+        if (isset($session)) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('pages/main_menu');
+            $this->load->view('templates/footer');
+            return;
+        }
+        $this->load->helper('form');
+
+
+        
 
         $this->form_validation->set_rules('input_username', 'Username', 'required');
         $this->form_validation->set_rules('input_password', 'Password', 'required');
 
         if ($this->form_validation->run() === FALSE) {
             /*
-                Mancanza campi ritorno alla pagina login
-            */
+              Mancanza campi ritorno alla pagina login
+             */
 
             //$this->load->view('templates/header', $data);
             $this->load->view('login/index');
@@ -55,9 +60,11 @@ class Login extends CI_Controller
                 $session_data = array(
                     'username' => $result[0]->username,
                     'livello' => $result[0]->livello,
+                    'id_gruppo' => $result[0]->id_gruppo,
+                    'id_fascia' => $result[0]->id_fascia
                 );
                 // Add user data in session
-                $this->session->set_userdata('logged_in', $session_data);
+                $this->session->set_userdata('cvd_logged_in', $session_data);
 
                 $this->load->view('templates/header', $data);
                 $this->load->view('pages/main_menu');
@@ -70,14 +77,14 @@ class Login extends CI_Controller
         }
     }
 
-    public function logout()
-    {
+    public function logout() {
         // Removing session data
         $sess_array = array(
-            'username' => ''
+            'session' => 'NONE'
         );
-        $this->session->unset_userdata('logged_in', $sess_array);
+        $this->session->unset_userdata('cvd_logged_in');
         $data['title'] = 'Logout effettuato';
         $this->load->view('login/index', $data);
     }
+
 }

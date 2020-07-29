@@ -1,7 +1,7 @@
 <div>
 <?php
 
-print_r($this->session->userdata('logged_in'));
+print_r($this->session->userdata('cvd_logged_in'));
 
 
 ?>

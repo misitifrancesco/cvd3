@@ -21,7 +21,7 @@ class Documenti extends CI_Controller {
         $crud->set_theme('datatables');
         $crud->set_table('t_documento');
         //$crud->where("tipo='COCE'");
-        
+
         $crud->set_relation('id_tipodoc', 't_tipodoc', 'descrizione');
         $crud->display_as('id_tipodoc', 'Tipo documento');
         //$crud->set_subject('Employee');
@@ -34,14 +34,16 @@ class Documenti extends CI_Controller {
 
         $output = $crud->render();
 
-        
+
 
 
         $output->mio_parametro = 'Footer della pagina documenti';
 
 
+        $data['title'] = '';
+        $this->load->view('templates/header', $data);
         $this->load->view('generic/admin', $output);
-        //die();
+        $this->load->view('templates/footer');
     }
 
 }
