@@ -1,27 +1,37 @@
 <html>
 
-    <head>
-        <title>COndiVIDo</title>
-        <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"-->
-    </head>
+<head>
+    <title>COndiVIDo</title>
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/assets/css/cvd_theme.css">
+</head>
 
-    <body>
-        <!-- Image and text -->
-        <nav class="navbar navbar-light bg-light">
-            <a class="navbar-brand" href="#">
-
-                COndiVIDo
-            </a>
-        </nav>
-        <h3><?php echo $title; ?></h3>
-        <a href='<?php echo site_url('login/logout') ?>'>disconnetti</a> |
-        <a href='<?php echo site_url('persona/admin') ?>'>Persona</a> | 
-        <a href='<?php echo site_url('gruppi/admin') ?>'>Gruppi</a> |
-        <a href='<?php echo site_url('documenti/admin') ?>'>Documenti</a> |
-        <a href='<?php echo site_url('fasciaeta/admin') ?>'>Fasce Età</a> |
-        <a href='<?php echo site_url('attivita/admin') ?>'>Attività</a> |
-
-
-
-
-
+<body>
+    <!-- Image and text -->
+    <div class="navbar navbar-light bg-light">
+        <div class="navbar-logo" href="#">
+            COndiVIDo
+        </div>
+        
+        <div class="navbar-item">
+            <a href='<?php echo site_url('persona/admin') ?>'>Persona</a>
+        </div>
+        <div class="navbar-item">
+            <a href='<?php echo site_url('gruppi/admin') ?>'>Gruppi</a>
+        </div>
+        <div class="navbar-item">
+            <a href='<?php echo site_url('fasciaeta/admin') ?>'>Fasce Età</a>
+        </div>
+        <div class="navbar-item">
+        <a href='<?php echo site_url('attivita/admin') ?>'>Attività</a> 
+        </div>
+        <div style="float:right">
+            <a href='<?php echo site_url('login/logout') ?>'>disconnetti</a> 
+        </div>
+        <div style="clear:both"></div>
+    </div>
+    
+    <h3><?php echo $title; ?></h3>
+    
+     
+    
+     

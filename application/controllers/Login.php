@@ -22,8 +22,7 @@ class Login extends CI_Controller {
     }
 
     public function log() {
-        print_r($this->session->userdata('cvd_logged_in'));
-
+        
         $data['title'] = '';
         
         $session = $this->session->userdata('cvd_logged_in');
