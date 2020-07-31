@@ -42,8 +42,6 @@
             <?php echo $output; ?>
         </div>
         <!-- End of Main-->
-        <!-- Footer -->
-        <div><?php echo $mio_parametro ?></div>
-        <!-- End of Footer -->
+        
     </body>
 </html>
