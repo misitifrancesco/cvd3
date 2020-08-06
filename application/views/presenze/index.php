@@ -8,27 +8,13 @@
     <body>
         <div class="container">
 
-
-            <center>
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">COndiVIDo</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Agesci</h6>
-
-
-
-                        <label for="input_username">Username</label>
-                        <input type="text" name="input_username" /><br />
-
-                        <label for="input_password">Password</label>
-                        <input type="password" name="input_password" /><br />
-
-
-                        <input type="submit" class="btn btn-primary" name="submit" value="Login" />
-                        </form>
-                    </div>
-                </div>
-            </center>
+            <?php print_r($array_attivita)?>
+            <?php print_r($array_persone)?>
+            
+            <?php foreach ($array_persone as $key => $persona){
+                echo $persona->cognome;
+            }
+            ?>
 
         </div>
 
