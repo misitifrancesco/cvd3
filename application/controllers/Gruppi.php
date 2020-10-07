@@ -24,6 +24,7 @@ class Gruppi extends CI_Controller {
 
 
         $output->mio_parametro = 'Footer della pagina Gruppi';
+        $output->titolo_pagina = 'Gestione Gruppi';
 
         $data['title'] = '';
         $this->load->view('templates/header', $data);

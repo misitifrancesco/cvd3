@@ -13,6 +13,7 @@
                 <div class="card" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">COndiVIDo</h5>
+                        <img src="<?php echo base_url()?>/img/logo.png">
                         <h6 class="card-subtitle mb-2 text-muted">Agesci</h6>
 
 
@@ -24,7 +25,7 @@
                         <label for="input_password">Password</label>
                         <input type="password" name="input_password" /><br />
 
-
+                        <br>
                         <input type="submit" class="btn btn-primary" name="submit" value="Login" />
                         </form>
                         <?php echo validation_errors(); ?>

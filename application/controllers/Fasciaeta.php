@@ -24,7 +24,7 @@ class Fasciaeta extends CI_Controller {
 
 
         $output->mio_parametro = 'Footer della pagina Fasciaeta';
-
+        $output->titolo_pagina = 'Gestione Fasce Età';
 
         $data['title'] = '';
         $this->load->view('templates/header', $data);
