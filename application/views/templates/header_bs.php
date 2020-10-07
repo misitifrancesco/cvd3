@@ -30,6 +30,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo site_url('presenze/index') ?>">Presenze</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo site_url('organigramma/index') ?>">Organigramma</a>
+                </li>
 
                 <?php if ($session['livello'] == '100') { ?>
 

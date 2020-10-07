@@ -1,4 +1,7 @@
 <?php
+
+header('Cache-Control: no cache'); //no cache
+session_cache_limiter('private_no_expire'); // works
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
@@ -44,7 +47,7 @@ class Organigramma extends CI_Controller
             $capi_gruppo = $this->organigramma_model->retrieve_capi_gruppi($gruppo->id_gruppo);
 
             foreach ($capi_gruppo as $capo_gruppo) {
-                $str_res .= '<tr><td colspan="3"><center><h5>' . $capo_gruppo->cognome . ' ' . $capo_gruppo->nome . '</h5></center></td></tr>';
+                $str_res .= '<tr><td colspan="3"><center><h4>' . $capo_gruppo->nome . ' ' . $capo_gruppo->cognome . '</h4></center></td></tr>';
             }
 
             foreach ($array_fasciaeta as $fasciaeta) {
@@ -57,10 +60,11 @@ class Organigramma extends CI_Controller
 
                 //trovo i capiunita
                 $capi_unita = $this->organigramma_model->retrieve_capi_unita($gruppo->id_gruppo, $fasciaeta->id_fascia);
+                //print_r($capi_unita);
                 foreach ($capi_unita as $capo_unita) {
                     $str_res .= '<tr>';
                     $str_res .= '<td></td>';
-                    $str_res .= '<td><h4>' . $capo_unita->cognome . ' ' . $capo_unita->nome . '</h4></td>';
+                    $str_res .= '<td><h5>' . $capo_unita->nome . ' ' . $capo_unita->cognome . '</h5></td>';
                     $str_res .= '<tr>';
                 }
                 //trovo gli scout
@@ -69,7 +73,7 @@ class Organigramma extends CI_Controller
                     $str_res .= '<tr>';
                     $str_res .= '<td></td>';
                     $str_res .= '<td></td>';
-                    $str_res .= '<td>' . $scout->cognome . ' ' . $scout->nome . '</td>';
+                    $str_res .= '<td>' . $scout->nome . ' ' . $scout->cognome . '</td>';
                     $str_res .= '</tr>';
                 }
             }

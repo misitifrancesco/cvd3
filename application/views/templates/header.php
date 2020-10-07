@@ -1,3 +1,4 @@
+
 <html>
 
 <head>
@@ -25,6 +26,9 @@
         </div>
         <div class="navbar-item btn_menu">
             <a href='<?php echo site_url('presenze/index') ?>'>Presenze</a>
+        </div>
+        <div class="navbar-item btn_menu">
+            <a href='<?php echo site_url('organigramma/index') ?>'>Organigramma</a>
         </div>
         <?php if ($session['livello'] == '100') { ?>
             <div class="navbar-item btn_menu">

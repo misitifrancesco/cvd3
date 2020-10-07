@@ -13,15 +13,19 @@ class Organigramma_model extends CI_Model
         $this->db->select('*');
         $this->db->from('t_persona');
         $this->db->where($condition);
+        $this->db->order_by('cognome', 'ASC');
+
         $query = $this->db->get();
         return $query->result();
     }
     public function retrieve_capi_unita($id_gruppo, $id_fascia)
     {
-        $condition = " id_gruppo = '" . $id_gruppo . "' AND id_fascia = '" . $id_fascia . "' and livello = '50' ";
+        $condition = " id_gruppo = '" . $id_gruppo . "' AND id_fascia = '" . $id_fascia . "' and livello = '25' ";
         $this->db->select('*');
         $this->db->from('t_persona');
         $this->db->where($condition);
+        $this->db->order_by('cognome', 'ASC');
+
         $query = $this->db->get();
         return $query->result();
     }
@@ -31,6 +35,8 @@ class Organigramma_model extends CI_Model
         $this->db->select('*');
         $this->db->from('t_persona');
         $this->db->where($condition);
+        $this->db->order_by('cognome', 'ASC');
+
         $query = $this->db->get();
         return $query->result();
     }

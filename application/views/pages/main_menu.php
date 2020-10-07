@@ -66,6 +66,9 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
+    $('#btn_documenti').click(function() {
+        window.location.href = '<?php echo site_url('documenti/admin') ?>';
+    })
     $('#btn_persone').click(function() {
         window.location.href = '<?php echo site_url('persona/admin') ?>';
     })

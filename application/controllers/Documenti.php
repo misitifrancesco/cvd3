@@ -1,4 +1,6 @@
 <?php
+header('Cache-Control: no cache'); //no cache
+session_cache_limiter('private_no_expire'); // works
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -14,6 +16,8 @@ class Documenti extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->library('grocery_CRUD');
+        
+
     }
 
     public function admin()
@@ -21,7 +25,7 @@ class Documenti extends CI_Controller
 
         $crud = new grocery_CRUD();
         $session = $this->session->userdata('cvd_logged_in');
-        print_r($session);
+        //print_r($session);
 
 
         $crud->set_theme('datatables');

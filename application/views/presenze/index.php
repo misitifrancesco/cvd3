@@ -191,7 +191,7 @@
                 success: function(res) {
                     //console.log(res);
                     $('#div_select_attivita').html(res);
-                    alert(res);
+                    //alert(res);
 
 
                 },

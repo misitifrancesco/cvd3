@@ -1,4 +1,6 @@
 <?php
+header('Cache-Control: no cache'); //no cache
+session_cache_limiter('private_no_expire'); // works
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -26,7 +28,7 @@ class Presenze extends CI_Controller
         //Preparare dati dal model
         $session = $this->session->userdata('cvd_logged_in');
 
-        print_r($session);
+        //print_r($session);
 
 
         if ($session['livello'] == '100') {

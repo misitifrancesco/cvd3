@@ -1,4 +1,6 @@
 <?php
+header('Cache-Control: no cache'); //no cache
+session_cache_limiter('private_no_expire'); // works
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -83,7 +85,7 @@ class Persona extends CI_Controller
         $output = $crud->render();
 
         $output->mio_parametro = 'Footer della pagina Persona';
-        $output->titolo_pagina = 'Gestione Persone';
+        $output->titolo_pagina = 'Gestione anagrafica';
         $data['title'] = '';
         $this->load->view('templates/header', $data);
         $this->load->view('generic/admin', $output);

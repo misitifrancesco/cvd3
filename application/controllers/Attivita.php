@@ -1,4 +1,8 @@
 <?php
+header('Cache-Control: no cache'); //no cache
+session_cache_limiter('private_no_expire'); // works
+
+
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -33,13 +37,13 @@ class Attivita extends CI_Controller
         $crud->field_type('id_gruppo', 'hidden', $this->dati_utente['id_gruppo']);
         $crud->field_type('id_fascia', 'hidden', $this->dati_utente['id_fascia']);
 
-        
+
 
         $output = $crud->render();
 
 
         $output->mio_parametro = 'Footer della pagina Attivita';
-        $output->titolo_pagina = 'Gestione Attività';
+        $output->titolo_pagina = 'Gestione attività';
 
 
         $data['title'] = '';
