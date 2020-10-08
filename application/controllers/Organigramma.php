@@ -42,7 +42,7 @@ class Organigramma extends CI_Controller
 
         foreach ($array_gruppi as $gruppo) {
             //stampo nome gruppo
-            $str_res .= '<tr ><td colspan="3" ><center><h1><btn type="button" class="btn btn-danger btn_apri btn-lg" data-id_gruppo="' . $gruppo->id_gruppo . '" style="width:200px">' . $gruppo->descrizione . '</btn></h1></center></td></tr>';
+            $str_res .= '<tr ><td colspan="3" ><center><h1><btn type="button" class="btn btn-danger btn_apri btn-lg" data-id_gruppo="' . $gruppo->id_gruppo . '" style="width:200px">' . strtoupper($gruppo->descrizione) . '</btn></h1></center></td></tr>';
             //trovo i capigruppo
             $capi_gruppo = $this->organigramma_model->retrieve_capi_gruppi($gruppo->id_gruppo);
 
