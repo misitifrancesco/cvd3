@@ -32,7 +32,16 @@ class Attivita extends CI_Controller
         $crud->columns('data_att', 'descrizione');
         $crud->add_fields('data_att', 'descrizione', 'id_gruppo', 'id_fascia');
         $crud->display_as('data_att', 'Data attività');
-        $crud->where(' id_gruppo ="' . $this->dati_utente['id_gruppo'] . '"');
+        if ($this->dati_utente['livello'] == '100') {
+            $crud->set_relation('id_gruppo', 't_gruppo', 'descrizione');
+            $crud->set_relation('id_fascia', 't_fasciaeta', 'descrizione');
+            $crud->display_as('id_fascia', 'Fascia Età');
+            $crud->display_as('id_gruppo', 'Gruppo');
+            $crud->columns('data_att', 'descrizione', 'id_gruppo', 'id_fascia');
+        } else {
+            $crud->where(' id_gruppo ="' . $this->dati_utente['id_gruppo'] . '"');
+        }
+
 
         $crud->field_type('id_gruppo', 'hidden', $this->dati_utente['id_gruppo']);
         $crud->field_type('id_fascia', 'hidden', $this->dati_utente['id_fascia']);
