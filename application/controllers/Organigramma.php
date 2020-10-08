@@ -42,17 +42,17 @@ class Organigramma extends CI_Controller
 
         foreach ($array_gruppi as $gruppo) {
             //stampo nome gruppo
-            $str_res .= '<tr><td colspan="3"><center><h1>' . $gruppo->descrizione . '</h1></center></td></tr>';
+            $str_res .= '<tr ><td colspan="3" ><center><h1><btn type="button" class="btn btn-danger btn_apri btn-lg" data-id_gruppo="' . $gruppo->id_gruppo . '" style="width:200px">' . $gruppo->descrizione . '</btn></h1></center></td></tr>';
             //trovo i capigruppo
             $capi_gruppo = $this->organigramma_model->retrieve_capi_gruppi($gruppo->id_gruppo);
 
             foreach ($capi_gruppo as $capo_gruppo) {
-                $str_res .= '<tr><td colspan="3"><center><h4>' . $capo_gruppo->nome . ' ' . $capo_gruppo->cognome . '</h4></center></td></tr>';
+                $str_res .= '<tr class="tr_nascosto tr_gruppo_' . $gruppo->id_gruppo . '"><td colspan="3"><center><h4>' . $capo_gruppo->nome . ' ' . $capo_gruppo->cognome . '</h4></center></td></tr>';
             }
 
             foreach ($array_fasciaeta as $fasciaeta) {
                 //Stampo la fascia
-                $str_res .= '<tr>';
+                $str_res .= '<tr class="tr_nascosto tr_gruppo_' . $gruppo->id_gruppo . '">';
                 $str_res .= '<td>';
                 $str_res .= '<img src="' . base_url() . '/img/unita_' . $fasciaeta->id_fascia . '.png" width="50px";><span style="font-size:20px">' . $fasciaeta->fascia . '</span>';
                 $str_res .= '</td>';
@@ -62,7 +62,7 @@ class Organigramma extends CI_Controller
                 $capi_unita = $this->organigramma_model->retrieve_capi_unita($gruppo->id_gruppo, $fasciaeta->id_fascia);
                 //print_r($capi_unita);
                 foreach ($capi_unita as $capo_unita) {
-                    $str_res .= '<tr>';
+                    $str_res .= '<tr class="tr_nascosto tr_gruppo_' . $gruppo->id_gruppo . '">';
                     $str_res .= '<td></td>';
                     $str_res .= '<td><h5>' . $capo_unita->nome . ' ' . $capo_unita->cognome . '</h5></td>';
                     $str_res .= '<tr>';
@@ -70,7 +70,7 @@ class Organigramma extends CI_Controller
                 //trovo gli scout
                 $scouts = $this->organigramma_model->retrieve_scouts($gruppo->id_gruppo, $fasciaeta->id_fascia);
                 foreach ($scouts as $scout) {
-                    $str_res .= '<tr>';
+                    $str_res .= '<tr class="tr_nascosto tr_gruppo_' . $gruppo->id_gruppo . ' ">';
                     $str_res .= '<td></td>';
                     $str_res .= '<td></td>';
                     $str_res .= '<td>' . $scout->nome . ' ' . $scout->cognome . '</td>';

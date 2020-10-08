@@ -20,8 +20,12 @@
             text-decoration: underline;
         }
 
-        #table_organigramma td{
+        #table_organigramma td {
             padding: 5px;
+        }
+
+        .tr_nascosto {
+            display: none;
         }
     </style>
 </head>
@@ -43,3 +47,12 @@
 </body>
 
 </html>
+
+<script src="/cvd3/assets/js/jquery-3.5.1.js"></script>
+
+<script>
+    $(document).on('click', '.btn_apri', function() {
+        let id_gruppo = $(this).data('id_gruppo');
+        $('.tr_gruppo_' + id_gruppo).toggle();
+    })
+</script>

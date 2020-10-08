@@ -40,11 +40,14 @@ class Documenti extends CI_Controller
         //$crud->where(" id_fascia = '".$session['id_fascia']."'");
 
         $crud->set_relation('id_tipodoc', 't_tipodoc', 'descrizione');
+        $crud->set_relation('id_doc_livello', 't_doc_livello', 'descrizione');
         $crud->display_as('id_tipodoc', 'Tipo documento');
+        $crud->display_as('id_doc_livello', 'Livello Documento');
 
         $crud->required_fields('tipo');
         $crud->required_fields('descrizione');
         $crud->required_fields('nome_file');
+        
 
         $crud->set_field_upload('nome_file', 'assets/uploads/files');
 
@@ -52,7 +55,7 @@ class Documenti extends CI_Controller
         $crud->field_type('id_gruppo', 'hidden', $session['id_gruppo']);
         $crud->field_type('id_utente', 'hidden', $session['id_utente']);
 
-        $crud->columns(['descrizione', 'nome_file', 'id_tipodoc', 'data_doc']);
+        $crud->columns(['descrizione', 'nome_file', 'id_tipodoc', 'data_doc', 'id_doc_livello']);
 
 
         $crud->callback_before_delete(array($this, 'log_user_before_delete'));

@@ -36,6 +36,7 @@ class Presenze_model extends CI_Model
         $this->db->from('t_gruppo');
         if ($id_gruppo <> '-100')
             $this->db->where($condition);
+        //$this->db->order_by('id_gruppo', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }
@@ -48,6 +49,7 @@ class Presenze_model extends CI_Model
         $this->db->from('t_fasciaeta');
         if ($id_fasciaeta <> '-100')
             $this->db->where($condition);
+        //$this->db->order_by('id_fascia', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }
@@ -109,5 +111,17 @@ class Presenze_model extends CI_Model
             return false;
         //print_r($this->db->last_query());
         //print_r($query);
+    }
+
+    public function elimina_id($id)
+    {
+
+        $condition = " id_presenza = '" . $id . "' ";
+        $this->db->where($condition);
+        $this->db->delete('t_presenze');
+        if ($this->db->affected_rows())
+            return '1';
+        else
+            return '-1';
     }
 }

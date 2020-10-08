@@ -110,36 +110,46 @@
         </div>
 
         <div class="container">
-            <div class="table-responsive-sm">
+            <div id="div_tabella_presenze">
 
-                <table class="table" id="mine_table">
+                <div class="table-responsive-sm">
 
-                    <thead>
+                    <table class="table" id="mine_table">
 
-                        <tr>
-                            <th id="th_nome_attivita" colspan="3"></th>
-                        </tr>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Cognome</th>
-                            <th>Data di Nascita</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($array_presenze as $key => $presenze) { ?>
+                        <thead>
+
                             <tr>
-                                <td><?php echo $presenze->nome ?></td>
-                                <td><?php echo $presenze->cognome ?></td>
-                                <td><?php echo $presenze->data_nasc ?></td>
+                                <th id="th_nome_attivita" colspan="3"></th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Cognome</th>
+                                <th>Data di Nascita</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($array_presenze as $key => $presenze) { ?>
+                                <tr>
+                                    <td><?php echo $presenze->nome ?></td>
+                                    <td><?php echo $presenze->cognome ?></td>
+                                    <td><?php echo $presenze->data_nasc ?></td>
+                                    <td><button class="btn btn-danger btn_elimina" data-id_presenza="<?php echo $presenze->id_presenza ?>"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg></input></td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
         </div>
 
-
     </div>
+
+
 
 
     <script src="/cvd3/assets/js/jquery-3.5.1.js"></script>
@@ -174,14 +184,37 @@
         })
 
 
-        //        $('#select_attivita').change(function() {
         $(document).on('change', '#select_attivita', function() {
 
             let id_attivita = $(this).val();
-            //alert(id_attivita);
+           // alert(id_attivita);
             //aggiornaTabellaPresenze(id_attivita);
-            loadTable('mine_table', '<?php echo base_url() ?>index.php/presenze/lista_presenze_json/' + id_attivita)
-            aggiornanomeattivita(id_attivita);
+            //loadTable('mine_table', '<?php echo base_url() ?>index.php/presenze/lista_presenze_json/' + id_attivita)
+
+            retrieveTabellaPresenzeHTML(id_attivita);
+
+        })
+
+        $(document).on('click', '.btn_elimina', function() {
+            let id_presenza = $(this).data('id_presenza');
+            //alert(id_presenza);
+
+            if (confirm('Sei sicuro di voler eliminare?')) {
+                $.ajax({
+                    type: "GET",
+                    url: '<?php base_url() ?>/cvd3/index.php/presenze/elimina_presenza/' + id_presenza,
+                    success: function(res) {
+                        //console.log(res);
+                        //alert(res);
+                        retrieveTabellaPresenzeHTML($('#select_attivita').val());
+                        aggiornanomeattivita($('#select_attivita').val())
+                    },
+                    error: function(resx) {
+                        console.log(resx);
+                        //alert(resx);
+                    }
+                });
+            }
         })
 
         function aggiornaSelectAttivita(id_gruppo, id_fasciaeta) {
@@ -192,8 +225,6 @@
                     //console.log(res);
                     $('#div_select_attivita').html(res);
                     //alert(res);
-
-
                 },
                 error: function(resx) {
                     console.log(resx);
@@ -212,6 +243,24 @@
                     $('#th_nome_attivita').html(testo);
                     //console.log(res);
                     //alert(res);
+
+                },
+                error: function(resx) {
+                    console.log(resx);
+                    //alert(resx);
+                }
+            });
+        }
+
+        function retrieveTabellaPresenzeHTML(id_attivita) {
+            $.ajax({
+                type: "GET",
+                url: '<?php base_url() ?>/cvd3/index.php/presenze/get_tabella_presenze/' + id_attivita,
+                success: function(res) {
+                    //console.log(res);
+                    //alert(res);
+                    aggiornanomeattivita(id_attivita);
+                    $('#div_tabella_presenze').html(res);
 
                 },
                 error: function(resx) {

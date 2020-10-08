@@ -1,6 +1,6 @@
 <?php
-header('Cache-Control: no cache'); //no cache
-session_cache_limiter('private_no_expire'); // works
+//header('Cache-Control: no cache'); //no cache
+//session_cache_limiter('private_no_expire'); // works
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -43,6 +43,7 @@ class Persona extends CI_Controller
             $crud->display_as('id_fascia', 'Fascia');
             $crud->set_relation('id_gruppo', 't_gruppo', 'descrizione');
             $crud->set_relation('id_fascia', 't_fasciaeta', 'descrizione');
+            $crud->set_relation('livello', 't_livello', 'descrizione');
 
             $crud->callback_add_field('responsabile', function () {
                 return retrieveSelectResponsabili();

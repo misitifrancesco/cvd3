@@ -1,6 +1,6 @@
 <?php
-header('Cache-Control: no cache'); //no cache
-session_cache_limiter('private_no_expire'); // works
+//header('Cache-Control: no cache'); //no cache
+//session_cache_limiter('private_no_expire'); // works
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
@@ -18,6 +18,7 @@ class Presenze extends CI_Controller
         $this->load->model('attivita_model');
         $this->load->library('session');
         $this->load->library('form_validation');
+        $this->load->library('utils');
 
 
         //$this->load->library('grocery_CRUD');
@@ -113,7 +114,7 @@ class Presenze extends CI_Controller
         echo json_encode($array_presenze, true);
     }
 
-    public function visualizza_tabella_presenze($id_attivita)
+    /*public function visualizza_tabella_presenze($id_attivita)
     {
         $array_presenze = $this->presenze_model->get_lista_presenze($id_attivita);
 
@@ -121,7 +122,41 @@ class Presenze extends CI_Controller
         //echo json_encode($array_presenze, true);
 
         $this->load->view('presenze/lista_presenze', $data);
+    }*/
+
+    public function get_tabella_presenze($id_attivita)
+    {
+        $array_presenze = $this->presenze_model->get_lista_presenze($id_attivita);
+        $str_res = '';
+        $str_res .= '<table class="table" id="mine_table" >';
+        $str_res .= '<thead>';
+        $str_res .= '<tr>';
+        $str_res .= '<th id="th_nome_attivita" colspan="3"></th>';
+        $str_res .= '</tr>';
+        $str_res .= '<tr>';
+        $str_res .= '<th>Nome</th>';
+        $str_res .= '<th>Cognome</th>';
+        $str_res .= '<th>Data di Nascita</th>';
+        $str_res .= '<th></th>';
+        $str_res .= '</tr>';
+        $str_res .= '</thead>';
+        $str_res .= '<tbody>';
+        foreach ($array_presenze as $key => $presenze) {
+            $str_res .= '<tr>';
+            $str_res .= '<td>' . $presenze->nome . '</td>';
+            $str_res .= '<td>' . $presenze->cognome . '</td>';
+            $str_res .= '<td>' . $this->utils->dataEn2It($presenze->data_nasc) . '</td>';
+            $str_res .= '<td><button class="btn btn-danger btn_elimina" data-id_presenza="' . $presenze->id_presenza . '"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                            </svg></input></td>';
+            $str_res .= ' </tr>';
+        }
+        $str_res .= '</tbody>';
+        $str_res .= '</table>';
+        echo $str_res;
     }
+
     public function get_info_attivita($id_attivita)
     {
         $array_info_attivita = $this->attivita_model->retrieve_nome_attivita($id_attivita);
@@ -141,5 +176,11 @@ class Presenze extends CI_Controller
         }
         $str .= '</select>';
         echo $str;
+    }
+
+    public function elimina_presenza($id_presenza)
+    {
+        $eliminato = $this->presenze_model->elimina_id($id_presenza);
+        echo ($eliminato);
     }
 }

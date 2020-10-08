@@ -1,5 +1,3 @@
-
-
 <!--html>
 
     <head>
@@ -20,32 +18,34 @@
     </head>
 
     <body-->
-        <div class="container">
-            <div class="table-responsive-sm">
+<div class="container">
+    <div class="table-responsive-sm">
 
 
-                <table class="table" id="mine_table">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Cognome</th>
-                            <th>Data di Nascita</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($array_presenze as $key => $presenze) { ?>
-                            <tr>
-                                <td><?php echo $presenze->nome ?></td>
-                                <td><?php echo $presenze->cognome ?></td>
-                                <td><?php echo $presenze->data_nasc ?></td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <table class="table" id="mine_table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cognome</th>
+                    <th>Data di Nascita</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php //print_r($array_presenze)?>
+                <?php foreach ($array_presenze as $key => $presenze) { ?>
+                    <tr>
+                        <td><?php echo $presenze->nome ?></td>
+                        <td><?php echo $presenze->cognome ?></td>
+                        <td><?php echo $presenze->data_nasc ?></td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
 
-        <!--button onclick="loadTable('mine_table', '<?php echo base_url() ?>index.php/presenze/lista_presenze_json/1')">Ricarica</button>
+<!--button onclick="loadTable('mine_table', '<?php echo base_url() ?>index.php/presenze/lista_presenze_json/1')">Ricarica</button>
 
 
 
